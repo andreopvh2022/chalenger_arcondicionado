@@ -4,16 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "prod": "export SET NODE_ENV=production && node server.js",
+    "dev": "cross-env NODE_ENV=development nodemon server.js",
+    "swagger-autogen": "node ./swagger.js",
+    "test": "cross-env NODE_ENV=test jest --passWithNoTests --no-cache --runInBand --setupFiles dotenv/config",
+    "test:watch": "npm run test -- --watch",
+    "test:watch:windows": "cross-env npm run test -- --watch",
+    "test:coverage": "npm run test -- --coverage",
+    "test:clear-cache": "jest --clearCache"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/andreopvh2022/chalenger_arcondicionado.git"
-  },
+  "repository": "git+https://github.com/andreopvh2022/chalenger_arcondicionado.git",
   "author": "André Luiz Alencar de Oliveira",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/andreopvh2022/chalenger_arcondicionado/issues"
   },
-  "homepage": "https://github.com/andreopvh2022/chalenger_arcondicionado#readme"
+  "homepage": "https://github.com/andreopvh2022/chalenger_arcondicionado#readme",
+  "dependencies": {
+    "broker": "^1.0.1",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19",
+    "yarn": "^1.22.19",
+    "zookeeper": "^5.4.0"
+  }
 }
